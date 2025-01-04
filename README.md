@@ -172,6 +172,8 @@ From these, **KNN** performed extremely well overall (Accuracy, F1, ROC AUC) and
 
 ## Section 7: Evaluate KNN on Multiple Datasets
 
+**Please Note:** I could not upload all the CTU-13 datasets due to file size constraints. To run this portion of my code, you must download and install them in a data folder at the same level as my Jupyter Notebook.
+
 - I reused a dedicated function (`load_and_prepare_data`) to replicate cleaning & feature engineering.
 - Then tested **KNN** (using its best parameters) across ~12 additional `.binetflow` CSV files from **CTU-13**.
 - For most sets, the KNN model achieved extremely high performance (often near 1.0 in accuracy, F1, etc.).
