@@ -1,8 +1,6 @@
 # README.md
 
-## Citation
-
-# Dataset Citation & Description
+## Dataset Citation & Description
 
 This project uses the CTU-13 Dataset (Garcia et al., 2014), a comprehensive collection of botnet traffic captures created by the CTU University, Czech Republic. The dataset contains thirteen scenarios of different botnet samples, providing real botnet traffic mixed with normal and background traffic. Each scenario captures specific malware running on several machines.
 
