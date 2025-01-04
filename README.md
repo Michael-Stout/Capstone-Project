@@ -14,9 +14,9 @@ This project analyzes and detects botnet network traffic using the **CTU-13**-st
 
 Below is a summary of each step's findings, key observations, and final results.
 
-You may review the execution [log](logs/analysis.log) or plots (located in the plots folder) to verify the results or help independently analyze my findings.
+You may review the execution [log](logs/analysis.log) or [plots](plots/) to verify the results or help independently analyze my findings.
 
-[plots](logs/)
+
 
 ---
 
