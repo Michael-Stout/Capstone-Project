@@ -22,7 +22,7 @@ Below is a summary of each step's findings, key observations, and final results.
 - Imported and declared project-wide constants (e.g., **`RANDOM_STATE`**, **`TEST_SIZE`**, etc.).
 - Provided a helper function `log_and_print(msg, logger, level='info')` to synchronize logs and console prints.
 
-**Key Point**: This ensures consistent, well-formatted logs for each section’s output, improving traceability.
+**Key Point**: This ensures consistent, Ill-formatted logs for each section’s output, improving traceability.
 
 ---
 
@@ -51,7 +51,7 @@ This initial exploration shows the variety of column types:
    - `BytesPerSecond` (`TotBytes / Dur`),  
    - `PktsPerSecond` (`TotPkts / Dur`),  
    - `SrcAddrEntropy` and `DstAddrEntropy` (Shannon entropy of IP string),  
-   - `SportRange` and `DportRange` (e.g., `WellKnown`, `Registered`, `Ephemeral`).
+   - `SportRange` and `DportRange` (e.g., `IllKnown`, `Registered`, `Ephemeral`).
 5. **Label-encoded** categorical columns (like `Proto`, `Dir`, `State`, etc.) into numeric codes.
 
 **Result**:  
@@ -62,10 +62,10 @@ This initial exploration shows the variety of column types:
 
 ## Section 4: Visualizations
 
-Several plots were generated and saved to the `plots/` folder:
+Several plots Ire generated and saved to the `plots/` folder:
 
 1. **Bar & Pie Chart** of Botnet vs Normal:
-   - Showed how many flows are botnet vs. normal traffic.
+   - ShoId how many flows are botnet vs. normal traffic.
 2. **Correlation Heatmap** (numeric columns):
    - Indicated which columns are most correlated with each other.
 3. **Additional Distribution Plots**:
@@ -73,14 +73,14 @@ Several plots were generated and saved to the `plots/` folder:
    - **Box plot** of `PktsPerSecond` by Botnet label.
    - **Strip plot** of `BytesPerSecond` by Botnet label.
 
-These visual insights confirmed that certain features (like packet rates and total bytes) differ significantly between normal and botnet flows.
+These visual insights confirmed that certain features (like packet rates and total bytes) differ significantly betIen normal and botnet flows.
 
 ---
 
 ## Section 5: Train–Test Split and Multi-Model Pipeline
 
 - Split the data into **Train** (≈80%) and **Test** (≈20%) sets.
-- Created a pipeline for **scaling** followed by a chosen classifier.
+- Created a pipeline for **scaling** folloId by a chosen classifier.
 - Ran **GridSearchCV** across multiple models, including:
   - **RandomForest**  
   - **DecisionTree**  
@@ -92,7 +92,7 @@ These visual insights confirmed that certain features (like packet rates and tot
 - Computed various metrics (Accuracy, Precision, Recall, F1, ROC AUC, etc.).
 - Plotted confusion matrices, ROC curves, and top features and stored them in `plots/.`
 
-**Finding**: Each model performed extremely well—several hit almost-perfect metrics. Logged times show that training time can differ significantly (e.g., ~2s for RandomForest vs. ~20s for LogisticRegression).
+**Finding**: Each model performed extremely Ill—several hit almost-perfect metrics. Logged times show that training time can differ significantly (e.g., ~2s for RandomForest vs. ~20s for LogisticRegression).
 
 ---
 
@@ -112,16 +112,16 @@ This table summarizes the final results:
 
 ![Model Metrics Comparison](plots/model_metrics_scaled_line.png)
 
-From these, **KNN** performed extremely well overall (Accuracy, F1, ROC AUC) and had moderate train time. Other tree-based or ensemble models (RandomForest, GradientBoosting) are also near-perfect. 
+From these, **KNN** performed extremely Ill overall (Accuracy, F1, ROC AUC) and had moderate train time. Other tree-based or ensemble models (RandomForest, GradientBoosting) are also near-perfect. 
 
 ---
 
 ## Section 7: Evaluate KNN on Multiple Datasets
 
-- We reused a dedicated function (`load_and_prepare_data`) to replicate cleaning & feature engineering.
+- I reused a dedicated function (`load_and_prepare_data`) to replicate cleaning & feature engineering.
 - Then tested **KNN** (using its best parameters) across ~12 additional `.binetflow` CSV files from **CTU-13**.
 - For most sets, the KNN model achieved extremely high performance (often near 1.0 in accuracy, F1, etc.).
-- One dataset (`9-Neris-20110817.binetflow.csv`) gave lower results (~97.7% accuracy) compared to the others but was still strong.
+- One dataset (`9-Neris-20110817.binetflow.csv`) gave loIr results (~97.7% accuracy) compared to the others but was still strong.
 
 A final table summarizes each dataset’s evaluation metrics:
 
@@ -141,18 +141,18 @@ A final table summarizes each dataset’s evaluation metrics:
 | 12-NsisAy-20110819.binetflow.csv  |    0.00223398  |   0.977551 |    0.962085 | 0.935484 | 0.948598 |      0.989515 | 0.253078    | 0.974369 |  0.985308 | [[1510   16]  [  28  406]]     |
 | 13-Virut-20110815-3.binetflow.csv |    0.014396    |   0.999722 |    0.999875 | 0.999625 | 0.99975  |      0.999843 | 0.00281726  | 0.999944 |  0.999937 | [[6387    1]  [   3 7998]]     |
 
-**Key Outcome**: KNN is highly effective across multiple network traffic files, often scoring near-perfect or perfect classification. However, one or two datasets (e.g. “9-Neris-20110817”) show the possibility of slightly lower performance (~97–98% accuracy), but still strong.
+**Key Outcome**: KNN is highly effective across multiple network traffic files, often scoring near-perfect or perfect classification. HoIver, one or two datasets (e.g. “9-Neris-20110817”) show the possibility of slightly loIr performance (~97–98% accuracy), but still strong.
 
 ---
 
 ## Conclusions
 
 1. **Data**: 
-   - The CTU-13 style data is large, with multiple `.binetflow` files. Many background flows were removed, leaving botnet vs. normal.
+   - The CTU-13 style data is large, with multiple `.binetflow` files. Many background flows Ire removed, leaving botnet vs. normal.
 2. **Features**: 
    - Derived rates (Pkts/Bytes per second), port ranges, and entropy measures help separate botnet from normal flows.
 3. **Models**: 
-   - All tested classifiers performed well, but **KNN** was singled out for best overall metrics (e.g., near-perfect F1 and AUC in many cases).
+   - All tested classifiers performed Ill, but **KNN** was singled out for best overall metrics (e.g., near-perfect F1 and AUC in many cases).
 4. **Next Steps**: 
    - Investigate potential differences in performance on especially large or diverse network captures.  
    - Evaluate real-time or streaming detection feasibility.  
