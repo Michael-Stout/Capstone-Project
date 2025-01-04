@@ -56,7 +56,7 @@ This initial exploration shows the variety of column types:
 
 **Result**:  
 - Feature matrix shape ended up as **(10882, 15)** after removing background flows and retaining the relevant columns.  
-- A quick `.head()` gave a glimpse of the new columns and transformations.
+- A quick `.head()` showed the new columns and transformations.
 
 ---
 
@@ -73,14 +73,24 @@ Several plots Ire generated and saved to the `plots/` folder:
    - **Box plot** of `PktsPerSecond` by Botnet label.
    - **Strip plot** of `BytesPerSecond` by Botnet label.
 
-These visual insights confirmed that certain features (like packet rates and total bytes) differ significantly betIen normal and botnet flows.
+![Botnet Distribution](plots/botnet_distribution.png)
+
+![Correlation Heatmap](plots/correlation_heatmap.png)
+
+![Port Range Distribution by Botnet](plots/countplot_sortrange_botnet.png)
+
+![Packets per Second by Botnet](plots/boxplot_pktspersec_botnet.png)
+
+![Bytes per Second by Botnet](plots/stripplot_bytespersec_botnet.png)
+
+These visual insights confirmed that certain features (like packet rates and total bytes) differ significantly between normal and botnet flows.
 
 ---
 
 ## Section 5: Train–Test Split and Multi-Model Pipeline
 
 - Split the data into **Train** (≈80%) and **Test** (≈20%) sets.
-- Created a pipeline for **scaling** folloId by a chosen classifier.
+- Created a pipeline for **scaling** followed by a chosen classifier.
 - Ran **GridSearchCV** across multiple models, including:
   - **RandomForest**  
   - **DecisionTree**  
@@ -158,4 +168,4 @@ A final table summarizes each dataset’s evaluation metrics:
    - Evaluate real-time or streaming detection feasibility.  
    - Explore advanced feature engineering (deep packet inspection, time-series features, etc.) or use cross‑dataset training vs. testing to gauge generalization.
 
-**Bottom Line**: The pipeline effectively identifies botnet flows. KNN stands out as the best performer in these experiments, with near-perfect detection across multiple dataset files.
+**Bottom Line**: The pipeline effectively identifies botnet flows. KNN performs best in these experiments, with near-perfect detection across multiple dataset files.
