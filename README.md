@@ -31,6 +31,14 @@ Below is a summary of each step's findings, key observations, and final results.
 - Successfully loaded the main dataset (e.g., `11-Rbot-20110818-2.binetflow.csv`) of shape **(107251, 15)**.
 - Displayed sample rows and the dataset’s basic info, including column names and dtypes.
 
+|    | StartTime                  |     Dur | Proto   | SrcAddr       |   Sport | Dir   | DstAddr       |   Dport | State   |   sTos |   dTos |   TotPkts |   TotBytes |   SrcBytes | Label                           |
+|---:|:---------------------------|--------:|:--------|:--------------|--------:|:------|:--------------|--------:|:--------|-------:|-------:|----------:|-----------:|-----------:|:--------------------------------|
+|  0 | 2011/08/18 15:40:53.826372 | 2.98325 | tcp     | 76.76.172.248 |   63577 | ->    | 147.32.84.229 |   13363 | SR_SA   |      0 |      0 |         3 |        184 |        122 | flow=Background-TCP-Established |
+|  1 | 2011/08/18 15:40:55.435494 | 2.90603 | tcp     | 76.76.172.248 |   63580 | ->    | 147.32.84.229 |     443 | SR_SA   |      0 |      0 |         3 |        184 |        122 | flow=Background-TCP-Established |
+|  2 | 2011/08/18 15:40:57.060613 | 3.03052 | tcp     | 76.76.172.248 |   63582 | ->    | 147.32.84.229 |      80 | SR_SA   |      0 |      0 |         3 |        184 |        122 | flow=Background-TCP-Established |
+|  3 | 2011/08/18 15:40:56.809619 | 6.01623 | tcp     | 76.76.172.248 |   63577 | ->    | 147.32.84.229 |   13363 | SR_SA   |      0 |      0 |         3 |        184 |        122 | flow=Background-TCP-Established |
+|  4 | 2011/08/18 15:40:58.341523 | 6.12472 | tcp     | 76.76.172.248 |   63580 | ->    | 147.32.84.229 |     443 | SR_SA   |      0 |      0 |         3 |        184 |        122 | flow=Background-TCP-Established |
+
 The dataset includes:
 - **Network flow details** like `Proto`, `SrcAddr`, `DstAddr`, `TotBytes`, etc.
 - A `Label` column identifying traffic as `Background`, `Botnet`, or normal.
@@ -39,6 +47,28 @@ This initial exploration shows the variety of column types:
 - **Float** columns (`Dur`, `sTos`, `dTos`),
 - **Integer** columns (`TotPkts`, `TotBytes`, `SrcBytes`),
 - **Object** columns (`Proto`, `Label`, etc.).
+
+RangeIndex: 107251 entries, 0 to 107250
+Data columns (total 15 columns):
+ #   Column     Non-Null Count   Dtype  
+---  ------     --------------   -----  
+ 0   StartTime  107251 non-null  object 
+ 1   Dur        107251 non-null  float64
+ 2   Proto      107251 non-null  object 
+ 3   SrcAddr    107251 non-null  object 
+ 4   Sport      106788 non-null  object 
+ 5   Dir        107251 non-null  object 
+ 6   DstAddr    107251 non-null  object 
+ 7   Dport      99351 non-null   object 
+ 8   State      107160 non-null  object 
+ 9   sTos       106271 non-null  float64
+ 10  dTos       90292 non-null   float64
+ 11  TotPkts    107251 non-null  int64  
+ 12  TotBytes   107251 non-null  int64  
+ 13  SrcBytes   107251 non-null  int64  
+ 14  Label      107251 non-null  object 
+dtypes: float64(3), int64(3), object(9)
+memory usage: 12.3+ MB
 
 ---
 
