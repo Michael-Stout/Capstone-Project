@@ -51,7 +51,7 @@ This initial exploration shows the variety of column types:
    - `BytesPerSecond` (`TotBytes / Dur`),  
    - `PktsPerSecond` (`TotPkts / Dur`),  
    - `SrcAddrEntropy` and `DstAddrEntropy` (Shannon entropy of IP string),  
-   - `SportRange` and `DportRange` (e.g., `IllKnown`, `Registered`, `Ephemeral`).
+   - `SportRange` and `DportRange` (e.g., `WellKnown 0 - 1023`, `Registered 1024 - 49151`, `Ephemeral/Dynamic 49152 - 65535`).
 5. **Label-encoded** categorical columns (like `Proto`, `Dir`, `State`, etc.) into numeric codes.
 
 **Result**:  
@@ -69,7 +69,7 @@ Several plots Ire generated and saved to the `plots/` folder:
 2. **Correlation Heatmap** (numeric columns):
    - Indicated which columns are most correlated with each other.
 3. **Additional Distribution Plots**:
-   - **Count plot** comparing e.g., `SportRange` vs. Botnet label.
+   - **Count plot** comparing, e.g., `SportRange` vs. Botnet label.
    - **Box plot** of `PktsPerSecond` by Botnet label.
    - **Strip plot** of `BytesPerSecond` by Botnet label.
 
@@ -101,8 +101,7 @@ These visual insights confirmed that certain features (like packet rates and tot
   - **GradientBoosting**  
 - Computed various metrics (Accuracy, Precision, Recall, F1, ROC AUC, etc.).
 - Plotted confusion matrices, ROC curves, and top features and stored them in `plots/.`
-
-**Finding**: Each model performed extremely Ill—several hit almost-perfect metrics. Logged times show that training time can differ significantly (e.g., ~2s for RandomForest vs. ~20s for LogisticRegression).
+**Finding**: Each model performed extremely well—several hit almost-perfect metrics. Logged times show that training time can differ significantly (e.g., ~2s for RandomForest vs. ~20s for LogisticRegression).
 
 ---
 
@@ -122,7 +121,7 @@ This table summarizes the final results:
 
 ![Model Metrics Comparison](plots/model_metrics_scaled_line.png)
 
-From these, **KNN** performed extremely Ill overall (Accuracy, F1, ROC AUC) and had moderate train time. Other tree-based or ensemble models (RandomForest, GradientBoosting) are also near-perfect. 
+From these, **KNN** performed extremely well overall (Accuracy, F1, ROC AUC) and had moderate train time. Other tree-based or ensemble models (RandomForest, GradientBoosting) are also near-perfect. 
 
 ---
 
