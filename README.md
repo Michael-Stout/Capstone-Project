@@ -1,5 +1,18 @@
 # README.md
 
+## Citation
+
+# Dataset Citation & Description
+
+This project uses the CTU-13 Dataset (Garcia et al., 2014), a comprehensive collection of botnet traffic captures created by the CTU University, Czech Republic. The dataset contains thirteen scenarios of different botnet samples, providing real botnet traffic mixed with normal and background traffic. Each scenario captures specific malware running on several machines.
+
+In this analysis, I focus on Scenario 11 (Rbot), which contains botnet traffic captured on August 18, 2011.
+
+Citation:
+Sebastian Garcia, Martin Grill, Jan Stiborek and Alejandro Zunino. "An empirical comparison of botnet detection methods", Computers and Security Journal, Elsevier. 2014. Vol 45, pp 100-123.
+
+Dataset URL: https://www.stratosphereips.org/datasets-ctu13
+
 ## Overview
 
 This project analyzes and detects botnet network traffic using the **CTU-13**-style dataset(s). It walks through several major steps:
