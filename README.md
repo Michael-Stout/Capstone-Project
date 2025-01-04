@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project focuses on analyzing and detecting botnet network traffic using the **CTU-13**-style dataset(s). It walks through several major steps:
+This project analyzes and detects botnet network traffic using the **CTU-13**-style dataset(s). It walks through several major steps:
 
 1. **Section 1**: Logging Setup and Importing Libraries  
 2. **Section 2**: Loading and Exploring the Data  
@@ -12,13 +12,13 @@ This project focuses on analyzing and detecting botnet network traffic using the
 6. **Section 6**: Model Comparison  
 7. **Section 7**: Evaluating KNN on Multiple Datasets
 
-Below is a summary of the findings at each step, along with key observations and final results.
+Below is a summary of each step's findings, key observations, and final results.
 
 ---
 
 ## Section 1: Logging Setup and Libraries
 
-- Configured logging to capture output in a log file while optionally printing to console.
+- Configured logging to capture the output in a log file while optionally printing to the console.
 - Imported and declared project-wide constants (e.g., **`RANDOM_STATE`**, **`TEST_SIZE`**, etc.).
 - Provided a helper function `log_and_print(msg, logger, level='info')` to synchronize logs and console prints.
 
@@ -73,7 +73,7 @@ Several plots were generated and saved to the `plots/` folder:
    - **Box plot** of `PktsPerSecond` by Botnet label.
    - **Strip plot** of `BytesPerSecond` by Botnet label.
 
-These visual insights confirmed that certain features (like packet rates, total bytes) differ significantly between normal and botnet flows.
+These visual insights confirmed that certain features (like packet rates and total bytes) differ significantly between normal and botnet flows.
 
 ---
 
@@ -89,8 +89,8 @@ These visual insights confirmed that certain features (like packet rates, total 
   - **SVM**  
   - **LogisticRegression**  
   - **GradientBoosting**  
-- Computed a variety of metrics (Accuracy, Precision, Recall, F1, ROC AUC, etc.).
-- Plotted confusion matrices, ROC curves, top features, and stored them in `plots/`.
+- Computed various metrics (Accuracy, Precision, Recall, F1, ROC AUC, etc.).
+- Plotted confusion matrices, ROC curves, and top features and stored them in `plots/.`
 
 **Finding**: Each model performed extremely well—several hit almost-perfect metrics. Logged times show that training time can differ significantly (e.g., ~2s for RandomForest vs. ~20s for LogisticRegression).
 
@@ -109,6 +109,8 @@ This table summarizes the final results:
 | SVM                | 0.9953  | 0.9963       | 0.9957        | 0.9994     | 0.9976   | 0.9999   | ~3.75          |
 | LogisticRegression | 0.9917  | 0.9890       | 0.9867        | 0.9988     | 0.9927   | 0.9997   | ~21.13         |
 | GradientBoosting   | 0.9992  | 0.9986       | 0.9988        | 0.9994     | 0.9991   | 1.0000   | ~1.37          |
+
+![Model Metrics Comparison](plots/model_metrics_scaled_line.png)
 
 From these, **KNN** performed extremely well overall (Accuracy, F1, ROC AUC) and had moderate train time. Other tree-based or ensemble models (RandomForest, GradientBoosting) are also near-perfect. 
 
@@ -146,9 +148,9 @@ A final table summarizes each dataset’s evaluation metrics:
 ## Conclusions
 
 1. **Data**: 
-   - The CTU-13 style data is very large, with multiple `.binetflow` files. Many background flows were removed, leaving botnet vs. normal.
+   - The CTU-13 style data is large, with multiple `.binetflow` files. Many background flows were removed, leaving botnet vs. normal.
 2. **Features**: 
-   - Derived rates (Pkts/Bytes per second), plus port ranges and entropy measures, help separate botnet from normal flows.
+   - Derived rates (Pkts/Bytes per second), port ranges, and entropy measures help separate botnet from normal flows.
 3. **Models**: 
    - All tested classifiers performed well, but **KNN** was singled out for best overall metrics (e.g., near-perfect F1 and AUC in many cases).
 4. **Next Steps**: 
