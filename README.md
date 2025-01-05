@@ -19,10 +19,9 @@ For this analysis, Scenario 11 contained:
 - 2,718 normal traffic instances
 - 96,369 background traffic instances
 
-The dataset represents real botnet traffic mixed with normal traffic and background traffic. Scenario 11 specifically captured the behavior of a Neris botnet known for spamming and click fraud activities.
+The dataset represents real botnet traffic mixed with normal traffic and background traffic. Scenario 11 specifically captured the behavior of Rbot, which was a family of malware known for its backdoor capabilities and use in creating botnets.
 
-Reference:
-Sebastian Garcia, Martin Grill, Jan Stiborek and Alejandro Zunino. "An empirical comparison of botnet detection methods," Computers and Security Journal, Elsevier. 2014. Vol 45, pp 100-123.
+Reference: Sebastian Garcia, Martin Grill, Jan Stiborek and Alejandro Zunino. "An empirical comparison of botnet detection methods," Computers and Security Journal, Elsevier. 2014. Vol 45, pp 100-123.
 
 Key data features include:
 - Temporal information (StartTime, Duration)
@@ -153,7 +152,7 @@ The analysis yielded comprehensive insights into botnet detection capabilities:
    - Create automated response mechanisms
 
 ## Outline of Project
-1.	Network Analysis
+1.	Data Analysis
 - Section 1: Import Libraries & Logging - Sets logging, imports standard libraries, and configures global variables and color maps.
 - Section 2: Data Loading & Exploration - Loads the dataset(s), explores columns, checks missing values, and provides summary statistics.
 
