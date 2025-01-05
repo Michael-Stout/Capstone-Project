@@ -153,8 +153,18 @@ The analysis yielded comprehensive insights into botnet detection capabilities:
    - Create automated response mechanisms
 
 ## Outline of Project
-- [Network Analysis Notebook](notebooks/network_analysis.ipynb)
-- [Feature Engineering Notebook](notebooks/feature_engineering.ipynb)
-- [Model Development Notebook](notebooks/model_development.ipynb)
+1.	Network Analysis
+- Section 1: Import Libraries & Logging - Sets logging, imports standard libraries, and configures global variables and color maps.
+- Section 2: Data Loading & Exploration - Loads the dataset(s), explores columns, checks missing values, and provides summary statistics.
+
+2.	Feature Engineering
+- Section 3: Data Cleaning & Feature Engineering - Removes or consolidates certain columns, creates derived features (e.g., BytesPerSecond, PktsPerSecond, IP entropy), applies categorical encoding.
+- Section 4: Visualizations
+Plots distribution of botnet vs. normal, correlation heatmap, or other analyses that inform feature engineering decisions.
+
+4.	Model Development
+- Section 5: Train-Test Split & Multi-Model Pipeline - Prepares data splits, builds multiple classifiers with GridSearchCV, and logs performance metrics.
+- Section 6: Model Evaluations -Compares model metrics, outputs a scaled comparison chart (line or bar plots), and logs a summary table.
+- Section 7: Evaluate KNN on Multiple Datasets - Demonstrates how a chosen model (KNN) generalizes by applying it to multiple external CTU-13 dataset files and logs final performance metrics for each dataset.
 
 *Note: Plots and logs are available in the project directory.*
