@@ -2,16 +2,16 @@
 **Author:** Michael Stout
 
 ## Executive Summary
-This project analyzes network traffic data to detect and classify botnet activities using machine learning techniques. The analysis processed over 107,000 network traffic records, identifying distinct patterns between normal and botnet traffic. The project successfully developed enhanced feature engineering techniques and visualization methods to improve botnet detection accuracy.
+This project analyzes network traffic data to detect and classify botnet activities using machine learning techniques. The analysis processed over 107,000 network traffic records, identifying patterns between normal and botnet traffic. The project successfully developed enhanced feature engineering techniques and visualization methods to improve botnet detection accuracy.
 
 ## Rationale
-Modern cyber threats, particularly botnets and zero-day exploits, pose significant risks to network security. Traditional signature-based detection methods often fail to identify new or evolving threats. Machine learning approaches offer the potential for more adaptive and proactive defense mechanisms, crucial for protecting both individual users and organizations from emerging cyber threats.
+Modern cyber threats, particularly botnets and zero-day exploits, pose significant risks to network security. Traditional signature-based detection methods often fail to identify new or evolving threats. Machine learning approaches offer the potential for more adaptive and proactive defense mechanisms, which are crucial for protecting individual users and organizations from emerging cyber threats.
 
 ## Research Question
-How can machine learning techniques enhance the detection of zero-day exploits and botnet activities within network traffic? Specifically, what network traffic patterns and features are most indicative of botnet activity?
+How can machine learning techniques enhance the detection of zero-day exploits and botnet activities within network traffic? Specifically, what network traffic patterns and features most indicate botnet activity?
 
 ## Data Sources
-This study utilized the CTU-13 Dataset, specifically Scenario 11, as part of a comprehensive botnet capture effort by the Czech Technical University (CTU) in Prague. The CTU-13 dataset is a labeled dataset of botnet, normal, and background traffic captured in 2011 from the CTU University network.
+This study utilized the [CTU-13 Dataset](https://www.stratosphereips.org/datasets-ctu13#:~:text=The%20CTU%2D13%20is%20a,normal%20traffic%20and%20background%20traffic.), specifically Scenario 11, which is part of a comprehensive botnet capture effort by the Czech Technical University (CTU) in Prague. The CTU-13 dataset is a labeled dataset of botnet, normal, and background traffic captured in 2011 from the CTU University network.
 
 For this analysis, Scenario 11 contained:
 - 107,251 total network traffic records
@@ -19,7 +19,7 @@ For this analysis, Scenario 11 contained:
 - 2,718 normal traffic instances
 - 96,369 background traffic instances
 
-The dataset represents real botnet traffic mixed with normal traffic and background traffic. Scenario 11 specifically captured the behavior of the Rbot malware and included both benign and malicious traffic. Each row represents a network flow, summarizing communication between source and destination endpoints over a period. Rbot is a family of malware classified as a backdoor Trojan that provides attackers with remote control over infected machines.
+The dataset represents real botnet traffic mixed with normal traffic and background traffic. Scenario 11 specifically captured the behavior of a Neris botnet known for spamming and click fraud activities.
 
 Reference:
 Sebastian Garcia, Martin Grill, Jan Stiborek and Alejandro Zunino. "An empirical comparison of botnet detection methods," Computers and Security Journal, Elsevier. 2014. Vol 45, pp 100-123.
@@ -83,12 +83,25 @@ The analysis yielded comprehensive insights into botnet detection capabilities:
    - All models achieved F1 scores > 0.999
    - Extremely high precision and recall across all models
 
-2. **Feature Importance:**
+2. **Cross-Dataset Validation:**
+   - Evaluated KNN model across all 13 scenarios in the CTU-13 dataset:
+     - Perfect accuracy (1.0) achieved on 6 scenarios
+     - >0.99 accuracy achieved on 5 scenarios
+     - >0.97 accuracy achieved on 2 scenarios
+   - Notable results per botnet type:
+     - Rbot scenarios (3,4,10,11): Consistently achieved 0.999+ accuracy
+     - Neris scenarios (1,2,9): Achieved 0.97-0.999 accuracy
+     - Virut scenarios (5,13): Perfect or near-perfect accuracy
+     - More challenging scenarios:
+       - Scenario 9 (Neris): 0.977 accuracy
+       - Scenario 12 (NsisAy): 0.978 accuracy
+
+3. **Feature Importance:**
    - BytePktRatio emerged as the most significant feature
    - SrcBytes and TotBytes showed high importance
    - Network entropy measures proved valuable for classification
 
-3. **Traffic Distribution:**
+4. **Traffic Distribution:**
    - Botnet traffic: 8,164 instances
    - Normal traffic: 2,718 instances
    - Clear distinctions in traffic patterns between botnet and normal flows
@@ -107,11 +120,24 @@ The analysis yielded comprehensive insights into botnet detection capabilities:
 
 ## Next Steps
 1. **Model Deployment:**
-   - Implement KNN model as the primary classifier and test in the datasets of the CTU-13
-   - Develop an ensemble approach using top-performing models
+   - Implement KNN model as the primary classifier
    - Create a real-time classification pipeline
+   - Develop monitoring and alerting systems
 
-2. **Model Enhancement:**
+2. **Feature Enhancement:**
+   - Explore additional protocol-specific features
+   - Implement deep packet inspection features
+   - Integrate temporal pattern analysis
+
+3. **Performance Optimization:**
+   - Optimize KNN for real-time classification
+   - Implement efficient data preprocessing pipeline
+   - Develop automated model retraining procedures
+
+4. **Operational Integration:**
+   - Design scalable deployment architecture
+   - Implement automated response mechanisms
+   - Create a monitoring dashboard for model performance
    - Implement real-time detection capabilities
    - Develop adaptive learning mechanisms
    - Integrate additional network metrics
@@ -122,8 +148,13 @@ The analysis yielded comprehensive insights into botnet detection capabilities:
    - Develop protocol-specific analysis
 
 3. **Deployment Considerations:**
-   - Design scalable implementation strategy
+   - Design a scalable implementation strategy
    - Develop monitoring and alerting systems
    - Create automated response mechanisms
+
+## Outline of Project
+- [Network Analysis Notebook](notebooks/network_analysis.ipynb)
+- [Feature Engineering Notebook](notebooks/feature_engineering.ipynb)
+- [Model Development Notebook](notebooks/model_development.ipynb)
 
 *Note: Plots and logs are available in the project directory.*
